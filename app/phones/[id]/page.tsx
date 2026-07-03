@@ -43,7 +43,7 @@ export default async function PhoneDetailPage({ params }: Props) {
         <div className="bg-white rounded-2xl border border-gray-200 p-8 flex items-center justify-center min-h-80">
           <div className="relative w-full h-80">
             <Image
-              src={phone.imageUrl}
+              src={`/api/img?url=${encodeURIComponent(phone.imageUrl)}`}
               alt={phone.name}
               fill
               className="object-contain"

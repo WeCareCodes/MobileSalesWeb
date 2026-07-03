@@ -26,7 +26,7 @@ export default function PhoneCard({ phone, rank }: Props) {
 
       <div className="relative pt-[75%] bg-gray-50">
         <Image
-          src={phone.imageUrl}
+          src={`/api/img?url=${encodeURIComponent(phone.imageUrl)}`}
           alt={phone.name}
           fill
           className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
