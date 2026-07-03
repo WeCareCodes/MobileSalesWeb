@@ -17,9 +17,11 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@neondatabase/auth": "^0.4.2-beta",
+    "@neondatabase/auth-ui": "^0.2.1-beta",
     "@neondatabase/serverless": "^0.10.4",
     "drizzle-orm": "^0.44.2",
-    "next": "^15.3.3",
+    "next": "^16.2.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
