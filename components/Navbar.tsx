@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BRANDS, brandSlug } from "@/lib/brands";
 import { useState } from "react";
+import { UserButton, SignedIn, SignedOut } from "@neondatabase/auth-ui";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -20,16 +21,41 @@ export default function Navbar() {
           <span className="text-2xl">📱</span>
           <span>手機比較王</span>
         </Link>
-        <button
-          className="md:hidden p-2 rounded text-gray-600 hover:bg-gray-100"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="開啟選單"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-          </svg>
-        </button>
+
+        <div className="flex items-center gap-3">
+          {/* Auth buttons */}
+          <SignedOut>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/auth/sign-in"
+                className="text-sm font-medium text-gray-600 hover:text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-colors"
+              >
+                登入
+              </Link>
+              <Link
+                href="/auth/sign-up"
+                className="text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg transition-colors"
+              >
+                註冊
+              </Link>
+            </div>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="md:hidden p-2 rounded text-gray-600 hover:bg-gray-100"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="開啟選單"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Brand navigation */}
